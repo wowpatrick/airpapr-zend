@@ -22,7 +22,14 @@
           <layoutScriptFile layoutName="layout"/>
         </layoutScriptsDirectory>
       </layoutsDirectory>
-      <modelsDirectory/>
+      <modelsDirectory>
+        <modelFile modelName="Page"/>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="Guestbook"/>
+          <dbTableFile dbTableName="Post"/>
+        </dbTableDirectory>
+        <modelFile modelName="PostMapper"/>
+      </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>
         <viewScriptsDirectory>
