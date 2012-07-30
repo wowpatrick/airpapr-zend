@@ -1,3 +1,18 @@
-<div id="view-content">
-    <p>View script for controller <b>Page</b> and script/action name <b>index</b></p>
-</div>
+<?php
+$this->title = 'Posts';
+$this->headTitle($this->title);
+?>
+<p><a href="<?php echo $this->url(array('controller' => 'page', 'action' => 'add')); ?>">Add post</a></p>
+<?php $i = 0; ?>
+<?php foreach ($this->post as $post) : ?>
+<?php
+if ($i > 0) { echo '<hr />';}
+$i++;
+?>
+    <h1><?php echo $post->article_content_title_en ?></h1>
+    <p>
+        <a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'edit', 'id'=>$post->id)); ?>">Edit post</a>
+        <a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'delete', 'id'=>$post->id)); ?>">Delete post</a>
+</p>
+    <p><?php echo $post->article_content_text_en ?></p>
+<?php endforeach; ?>

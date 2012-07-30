@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Table data gatway. It already has the Db connection data from the ini
+ * Table data gatway. It already has the database connection data from the ini.
+ * It provides methodes to CRUD to the database.
  *
  */
 class Application_Model_DbTable_Posts extends Zend_Db_Table_Abstract
@@ -20,8 +21,8 @@ class Application_Model_DbTable_Posts extends Zend_Db_Table_Abstract
 
     public function addPost($title, $text) {
         $data = array(
-            'title' => $title,
-            'text' => $text
+            'article_content_title_en' => $title,
+            'article_content_text_en' => $text
         );
         $this->insert($data);
     }
