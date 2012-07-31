@@ -9,7 +9,7 @@ $this->headTitle($this->title);
 if ($i > 0) { echo '<hr />';}
 $i++;
 ?>
-    <h1><?php echo $post->article_content_title_en ?></h1>
+    <h1><a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'view', 'id'=>$post->id)); ?>"><?php echo $post->article_content_title_en ?></a></h1>
     <p>
         <a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'edit', 'id'=>$post->id)); ?>">Edit post</a>
         <a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'delete', 'id'=>$post->id)); ?>">Delete post</a>

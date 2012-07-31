@@ -1,0 +1,14 @@
+<?php
+$this->title = $this->post['article_content_title_en'] . ' - Posts';
+$this->headTitle($this->title);
+?>
+<p><a href="<?php echo $this->url(array('controller' => 'page', 'action' => 'add')); ?>">Add post</a></p>
+
+
+
+<h1><?php echo $this->post['article_content_title_en'] ?></h1>
+<p>
+    <a href="<?php echo $this->url(array('controller' => 'page', 'action' => 'edit', 'id' => $this->post['id'])); ?>">Edit post</a>
+    <a href="<?php echo $this->url(array('controller' => 'page', 'action' => 'delete', 'id' => $this->post['id'])); ?>">Delete post</a>
+</p>
+<p><?php echo $this->post['article_content_text_en'] ?></p>

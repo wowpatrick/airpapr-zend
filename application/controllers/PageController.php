@@ -37,6 +37,7 @@ class PageController extends Zend_Controller_Action
 
     /**
      * Edit existing posts from the database
+     *
      */
     public function editAction() {
         $form = new Application_Form_Post();
@@ -80,6 +81,13 @@ class PageController extends Zend_Controller_Action
             $posts = new Application_Model_DbTable_Posts();
             $this->view->post = $posts->getPost($id);
         }
+    }
+
+    public function viewAction() {
+        // The the id form the URL (the rquest object)
+        $id = $this->_getParam('id', 0);
+        $post = new Application_Model_DbTable_Posts();
+        $this->view->post = $post->getPost($id);
     }
 
 }
