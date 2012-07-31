@@ -11,7 +11,7 @@ class PageController extends Zend_Controller_Action
         // Create a new db table object
         $post = new Application_Model_DbTable_Posts();
         // Get the data from the db object and assign it to the view object
-        $this->view->post = $post->fetchAll();
+        $this->view->post = $post->fetchAll(null, "article_content_date ASC");
     }
 
     public function addAction() {
