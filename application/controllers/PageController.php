@@ -23,8 +23,8 @@ class PageController extends Zend_Controller_Action
         if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
             if ($form->isValid($formData)) {
-                $article_content_title_en = $form->getValue('title');
-                $article_content_text_en = $form->getValue('text');
+                $article_content_title_en = $form->getValue('article_content_title_en');
+                $article_content_text_en = $form->getValue('article_content_text_en');
                 $posts = new Application_Model_DbTable_Posts();
                 $posts->addPost($article_content_title_en, $article_content_text_en);
 
@@ -35,16 +35,51 @@ class PageController extends Zend_Controller_Action
         }
     }
 
-    public
+    /**
+     * Edit existing posts from the database
+     */
+    public function editAction() {
+        $form = new Application_Form_Post();
+        $this->view->form = $form;
 
-    function editAction() {
-        // action body
+        if ($this->getRequest()->isPost()) {
+            $formData = $this->getRequest()->getPost();
+            if ($form->isValid($formData)) {
+                $id = (int) $form->getValue('id');
+                $title = $form->getValue('article_content_title_en');
+                $text = $form->getValue('article_content_text_en');
+
+                $posts = new Application_Model_DbTable_Posts();
+                $posts->updatePost($id, $title, $text);
+
+                $this->_helper->redirector('index');
+            } else {
+                $form->populate($formData);
+            }
+        } else {
+            $id = $this->_getParam('id', 0);
+            if ($id > 0) {
+                $posts = new Application_Model_DbTable_Posts();
+                $form->populate($posts->getPost($id));
+            }
+        }
     }
 
-    public
+    public function deleteAction() {
+        if ($this->getRequest()->isPost()) {
+            $del = $this->getRequest()->getPost('del');
+            if ($del == 'Yes') {
+                $id = $this->getRequest()->getPost('id');
+                $posts = new Application_Model_DbTable_Posts();
+                $posts->deletePost($id);
+            }
 
-    function deleteAction() {
-        // action body
+            $this->_helper->redirector('index');
+        } else {
+            $id = $this->_getParam('id', 0);
+            $posts = new Application_Model_DbTable_Posts();
+            $this->view->post = $posts->getPost($id);
+        }
     }
 
 }

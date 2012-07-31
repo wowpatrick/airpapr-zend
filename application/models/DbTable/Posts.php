@@ -27,15 +27,15 @@ class Application_Model_DbTable_Posts extends Zend_Db_Table_Abstract
         $this->insert($data);
     }
 
-    public function updatePost($title, $text) {
+    public function updatePost($id, $title, $text) {
         $data = array(
-            'title' => $title,
-            'text' => $text
+            'article_content_title_en' => $title,
+            'article_content_text_en' => $text
         );
         $this->update($data, 'id = ' . (int)$id);
     }
 
-    public function deleteAlbum($id) {
+    public function deletePost($id) {
         $this->delete('id = '.(int)$id);
     }
 }
