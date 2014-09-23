@@ -7,6 +7,15 @@ class PageController extends Zend_Controller_Action
         /* Initialize action controller here */
     }
 
+    /**
+     * 
+     * Pre dispatch medthod used to include the _menu.phtml placeholder defined in the bootstrap
+     * http://framework.zend.com/manual/1.12/en/learning.view.placeholders.basics.html
+     */
+    public function preDispatch() {
+        $this->view->render('_menu.phtml');
+    }
+
     public function indexAction() {
         // Create a new db table object
         $post = new Application_Model_DbTable_Posts();
@@ -91,4 +100,3 @@ class PageController extends Zend_Controller_Action
     }
 
 }
-

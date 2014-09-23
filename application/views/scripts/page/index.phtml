@@ -1,18 +1,24 @@
 <?php
+$this->placeholder('menu')
+        ->append('<p>User: ' . 'la' . '</p>');
+?>
+
+<?php
 $this->title = 'Posts';
 $this->headTitle($this->title);
 ?>
 <p><a href="<?php echo $this->url(array('controller' => 'page', 'action' => 'add')); ?>">Add post</a></p>
 <?php $i = 0; ?>
 <?php foreach ($this->post as $post) : ?>
-<?php
-if ($i > 0) { echo '<hr />';}
-$i++;
-?>
-    <h1><a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'view', 'article'=>$post->article_name)); ?>"><?php echo $post->article_content_title_en ?></a></h1>
+    <?php
+    if ($i > 0)
+        echo '<hr />';
+    $i++;
+    ?>
+    <h1><a href="<?php echo $this->url(array('controller' => 'page', 'action' => 'view', 'article' => $post->article_name)); ?>"><?php echo $post->article_content_title_en ?></a></h1>
     <p>
-        <a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'edit', 'id'=>$post->id)); ?>">Edit post</a>
-        <a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'delete', 'id'=>$post->id)); ?>">Delete post</a>
-</p>
+        <a href="<?php echo $this->url(array('controller' => 'page', 'action' => 'edit', 'id' => $post->id)); ?>">Edit post</a>
+        <a href="<?php echo $this->url(array('controller' => 'page', 'action' => 'delete', 'id' => $post->id)); ?>">Delete post</a>
+    </p>
     <p><?php echo stripcslashes($post->article_content_text_en) ?></p>
 <?php endforeach; ?>

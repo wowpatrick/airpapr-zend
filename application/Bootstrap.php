@@ -19,4 +19,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         
         return $autoloader;
     }
+    
+    protected function _initSidebar()
+    {
+        $this->bootstrap('View');
+        $view = $this->getResource('View');
+        
+        $view->placeholder('menu')
+            ->setPrefix('<div class="menu">')
+            ->setSeparator('<hr />')
+            ->setPostfix("</div>");
+    }
 }
