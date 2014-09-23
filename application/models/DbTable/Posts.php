@@ -10,9 +10,15 @@ class Application_Model_DbTable_Posts extends Zend_Db_Table_Abstract
 
     protected $_name = 'airpapr_base';
 
-    public function getPost($id) {
-        $id = (int)$id;
-        $row = $this->fetchRow('id = ' . $id);
+    /**
+     * Get a article form the database
+     */
+    public function getPost($articleName) {              
+        $row = $this->fetchRow(
+            $this->select()
+            ->where('article_name = ?', $articleName)
+            ->order('id ASC')
+        );
         if(!$row) {
             throw new Exception("Could not find row $id");
         }

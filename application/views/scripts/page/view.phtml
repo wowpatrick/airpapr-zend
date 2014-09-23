@@ -10,4 +10,4 @@ $this->headTitle($this->title);
     <a href="<?php echo $this->url(array('controller' => 'page', 'action' => 'delete', 'id' => $this->post['id'])); ?>">Delete post</a>
 </p>
 <img src="<?php echo $this->baseUrl() . '/images/' . $this->post['article_content_pics'] ?>" />
-<p><?php echo $this->post['article_content_text_en'] ?></p>
+<p><?php echo stripcslashes($this->post['article_content_text_en']) ?></p>

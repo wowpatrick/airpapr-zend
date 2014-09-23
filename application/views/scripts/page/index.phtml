@@ -9,10 +9,10 @@ $this->headTitle($this->title);
 if ($i > 0) { echo '<hr />';}
 $i++;
 ?>
-    <h1><a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'view', 'id'=>$post->id)); ?>"><?php echo $post->article_content_title_en ?></a></h1>
+    <h1><a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'view', 'article'=>$post->article_name)); ?>"><?php echo $post->article_content_title_en ?></a></h1>
     <p>
         <a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'edit', 'id'=>$post->id)); ?>">Edit post</a>
         <a href="<?php echo $this->url(array ('controller'=>'page', 'action'=>'delete', 'id'=>$post->id)); ?>">Delete post</a>
 </p>
-    <p><?php echo $post->article_content_text_en ?></p>
+    <p><?php echo stripcslashes($post->article_content_text_en) ?></p>
 <?php endforeach; ?>

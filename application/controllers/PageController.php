@@ -85,9 +85,9 @@ class PageController extends Zend_Controller_Action
 
     public function viewAction() {
         // The the id form the URL (the rquest object)
-        $id = $this->_getParam('id', 0);
+        $articleName = $this->_getParam('article', 0);
         $post = new Application_Model_DbTable_Posts();
-        $this->view->post = $post->getPost($id);
+        $this->view->post = $post->getPost($articleName);
     }
 
 }
