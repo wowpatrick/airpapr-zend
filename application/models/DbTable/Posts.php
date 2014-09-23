@@ -44,5 +44,15 @@ class Application_Model_DbTable_Posts extends Zend_Db_Table_Abstract
     public function deletePost($id) {
         $this->delete('id = '.(int)$id);
     }
+    
+    public function getMenu() {
+        $row = $this->fetchRow(
+                $this->select()
+                ->where('parent = ?', '')
+                ->order('id ASC')
+                );
+        
+        return $row->toArray();
+    }
 }
 
